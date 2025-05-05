@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";//update existing import
+import { FilterOption } from "../../types/interfaces"
+import { SelectChangeEvent } from "@mui/material";
+// import React from "react";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
@@ -24,18 +27,44 @@ const styles = {
 };
 
 
-  const FilterMoviesCard: React.FC= () => {
+interface FilterMoviesCardProps {
+  titleFilter: string;
+  genreFilter: string;
+}
 
-  const genres = [
-    {id: 1, name: "Animation"},
-    {id: 2, name: "Comedy"},
-    {id: 3, name: "Thriller"}
-  ]
-  const productionCountry = [
-    {id: 1, name: "Australia"},
-    {id: 2, name: "Ireland"},
-    {id: 3, name: "USA"}
-  ]
+const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreFilter }) => {
+  const [genres, setGenres] = useState([{ id: '0', name: "All" }])
+  // const [production_countries, setCountry] = useState([{ iso_3166_1: '0', name: "All" }])
+
+  useEffect(() => {
+    fetch(
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=${import.meta.env.VITE_TMDB_KEY}`
+    )
+      .then(res => res.json())
+      .then(json => {
+        return json.genres
+      })
+      .then(apiGenres => {
+        setGenres([genres[0], ...apiGenres]);
+      });
+      // .then(apiCountry => {
+      //   setCountry([production_countries[0], ...apiCountry]);
+      // });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleChange = (e: SelectChangeEvent, type: FilterOption, value: string) => {
+    e.preventDefault()
+    // Completed later
+  };
+
+  const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
+    handleChange(e, "title", e.target.value)
+  }
+
+  const handleGenreChange = (e: SelectChangeEvent) => {
+    handleChange(e, "genre", e.target.value)
+  };
 
   return (
     <>
@@ -50,14 +79,20 @@ const styles = {
           id="filled-search"
           label="Search field"
           type="search"
+          value={titleFilter}
           variant="filled"
+          onChange={handleTextChange}
         />
+
         <FormControl sx={styles.formControl}>
           <InputLabel id="genre-label">Genre</InputLabel>
           <Select
-            labelId="genre-label"
-            id="genre-select"
-          >
+              labelId="genre-label"
+              id="genre-select"
+              value={genreFilter}
+              onChange={handleGenreChange}
+            >
+
             {genres.map((genre) => {
               return (
                 <MenuItem key={genre.id} value={genre.id}>
@@ -68,21 +103,21 @@ const styles = {
           </Select>
         </FormControl>
 
-        <FormControl sx={styles.formControl}>
+        {/* <FormControl sx={styles.formControl}>
           <InputLabel id="productionCountry-label">Production Contries</InputLabel>
           <Select
             labelId="productionCountry-label"
             id="ProductionCountry-select"
           >
-            {productionCountry.map((productionCountry) => {
+            {production_countries.map((production_countries) => {
               return (
-                <MenuItem key={productionCountry.id} value={productionCountry.id}>
-                  {productionCountry.name}
+                <MenuItem key={production_countries.iso_3166_1} value={production_countries.iso_3166_1}>
+                  {production_countries.name}
                 </MenuItem>
               );
             })}
           </Select>
-        </FormControl>
+        </FormControl> */}
       </CardContent>
     </Card>
     <Card sx={styles.root} variant="outlined">

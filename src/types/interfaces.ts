@@ -16,6 +16,7 @@ export interface BaseMovieProps {
     vote_count: number;
     favourite?: boolean;
     production_countries: Country[];
+    genre_ids?: number[];
   }
   export interface BaseMovieListProps { 
     movies: BaseMovieProps[];
@@ -48,6 +49,8 @@ export interface BaseMovieProps {
     movie: MovieDetailsProps;
     images: MovieImage[];
   }
+  export type FilterOption = "title" | "genre";
+
   
 
 
