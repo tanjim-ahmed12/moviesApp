@@ -31,6 +31,11 @@ const styles = {
     {id: 2, name: "Comedy"},
     {id: 3, name: "Thriller"}
   ]
+  const productionCountry = [
+    {id: 1, name: "Australia"},
+    {id: 2, name: "Ireland"},
+    {id: 3, name: "USA"}
+  ]
 
   return (
     <>
@@ -57,6 +62,22 @@ const styles = {
               return (
                 <MenuItem key={genre.id} value={genre.id}>
                   {genre.name}
+                </MenuItem>
+              );
+            })}
+          </Select>
+        </FormControl>
+
+        <FormControl sx={styles.formControl}>
+          <InputLabel id="productionCountry-label">Production Contries</InputLabel>
+          <Select
+            labelId="productionCountry-label"
+            id="ProductionCountry-select"
+          >
+            {productionCountry.map((productionCountry) => {
+              return (
+                <MenuItem key={productionCountry.id} value={productionCountry.id}>
+                  {productionCountry.name}
                 </MenuItem>
               );
             })}

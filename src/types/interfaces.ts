@@ -15,6 +15,7 @@ export interface BaseMovieProps {
     revenue: number;
     vote_count: number;
     favourite?: boolean;
+    production_countries: Country[];
   }
   export interface BaseMovieListProps { 
     movies: BaseMovieProps[];
@@ -24,7 +25,15 @@ export interface BaseMovieProps {
       id: number;
       name: string;
     }[];
+    // Country: {
+    //   iso_3166_1: string;
+    //   name: string;
+    // }[];
   }
+  export interface Country {
+    iso_3166_1: string;
+    name: string;
+}
   export interface MovieImage {
     file_path: string;
     aspect_ratio?: number; //some props are optional...
