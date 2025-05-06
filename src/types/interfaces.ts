@@ -18,10 +18,15 @@ export interface BaseMovieProps {
     production_countries: Country[];
     genre_ids?: number[];
   }
+  // export interface BaseMovieListProps {
+  //   movies: BaseMovieProps[];
+  //   selectFavourite: (movieId: number) => void;  //add this
+  // }   
   export interface BaseMovieListProps {
     movies: BaseMovieProps[];
-    selectFavourite: (movieId: number) => void;  //add this
-  }   
+    action: (m: BaseMovieProps) => React.ReactNode;
+  }
+  
   export interface MovieDetailsProps extends BaseMovieProps {
     genres: {
       id: number;
@@ -55,6 +60,11 @@ export interface BaseMovieProps {
   export interface MovieListPageTemplateProps extends BaseMovieListProps {
     title: string;
   }
+  // export interface BaseMovieListProps {
+  //   movies: BaseMovieProps[];
+  //   action: (m: BaseMovieProps) => React.ReactNode;
+  // }
+  
   
   export interface Review{
     id: string;
