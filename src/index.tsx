@@ -4,11 +4,13 @@ import { BrowserRouter, Route, Navigate, Routes, Link } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/movieDetailsPage";
 import MovieReviewPage from "./pages/movieReviewPage";
+import SiteHeader from './components/siteHeader'
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
 
 const App = () => {
   return (
     <BrowserRouter>
+    <SiteHeader />      {/* New Header  */}
       <ul>
         <li>
           <Link to="/">Home</Link>
