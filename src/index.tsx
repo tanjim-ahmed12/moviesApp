@@ -7,34 +7,28 @@ import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader'
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
+import MoviesContextProvider from "./contexts/movieContext";
 
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <SiteHeader />      {/* New Header  */}
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/movies/favourites">Favourites</Link>
-            </li>
-          </ul>
-          <Routes>
-            <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
-            <Route path="/movies/:id" element={<MoviePage />} />
-            <Route path="/" element={<HomePage />} />
-            <Route path="*" element={<Navigate to="/" />} />
-            <Route path="/reviews/:id" element={<MovieReviewPage/>} />
-            <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
-          </Routes>
-      </BrowserRouter>
-      <ReactQueryDevtools initialIsOpen={false}/>
-    </QueryClientProvider>
+   <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+    <SiteHeader/>
+      <MoviesContextProvider>
+        <Routes>
+          <Route path="/movies/favourites" element={<FavouriteMoviesPage />} />
+          <Route path="/movies/:id" element={<MoviePage />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="/reviews/:id" element={<MovieReviewPage/>} />
+          <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+        </Routes>
+      </MoviesContextProvider>
+    </BrowserRouter>
+   </QueryClientProvider>
   );
 };
 
