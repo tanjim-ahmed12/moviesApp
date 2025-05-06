@@ -52,7 +52,7 @@ const MovieFilterUI: React.FC<MovieFilterUIProps> = ({ onFilterValuesChange, tit
                 onClose={() => setDrawerOpen(false)}
             >
                 <FilterCard
-                    onUserInput={onFilterValuesChange}
+                    onFilterValuesChange={onFilterValuesChange}
                     titleFilter={titleFilter}
                     genreFilter={genreFilter}
                 />

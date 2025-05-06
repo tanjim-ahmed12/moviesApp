@@ -33,12 +33,12 @@ const styles = {
 
 
 interface FilterMoviesCardProps {
-  onUserInput: (f: FilterOption, s: string)  => void; // Add this line
+  onFilterValuesChange: (f: FilterOption, s: string)  => void; // Add this line
   titleFilter: string;
   genreFilter: string;
 }
 
-const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreFilter, onUserInput }) => {
+const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreFilter, onFilterValuesChange }) => {
   // const [genres, setGenres] = useState([{ id: '0', name: "All" }])
   // const [production_countries, setCountry] = useState([{ iso_3166_1: '0', name: "All" }])
 
@@ -77,7 +77,7 @@ const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreF
 
   const handleChange = (e: SelectChangeEvent, type: FilterOption, value: string) => {
     e.preventDefault()
-      onUserInput(type, value)
+    onFilterValuesChange(type, value)
   };
 
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {

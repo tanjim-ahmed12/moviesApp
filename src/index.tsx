@@ -8,6 +8,7 @@ import SiteHeader from './components/siteHeader'
 import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from 'react-query/devtools';
 import MoviesContextProvider from "./contexts/movieContext";
+import AddMovieReviewPage from './pages/addMovieReviewPage';
 
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/reviews/:id" element={<MovieReviewPage/>} />
           <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
+          <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
         </Routes>
       </MoviesContextProvider>
     </BrowserRouter>
