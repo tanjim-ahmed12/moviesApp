@@ -84,6 +84,14 @@ export interface BaseMovieProps {
     total_results: number;
     results: BaseMovieProps[];
   }
+  export interface Review {
+    author: string,
+    content: string,
+    agree: boolean,
+    rating: number,
+    movieId: number,
+  }
+
 
   
 
