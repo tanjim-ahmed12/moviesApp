@@ -12,6 +12,7 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
+import MustWatchPage from "./pages/mustWatchPage"; // NEW
 
 const App = () => {
   return (
@@ -27,6 +28,9 @@ const App = () => {
           <Route path="/reviews/:id" element={<MovieReviewPage/>} />
           <Route path="/movies/upcoming" element={<UpcomingMoviesPage />} />
           <Route path="/reviews/form" element={<AddMovieReviewPage/>} />
+
+          
+          <Route path="/mustwatch" element={<MustWatchPage />} /> 
         </Routes>
       </MoviesContextProvider>
     </BrowserRouter>
