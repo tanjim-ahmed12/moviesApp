@@ -10,7 +10,7 @@ import MovieFilterUI, {
   titleFilter,
   genreFilter,
 } from "../components/movieFilterUI";
-
+import AddToMustWatchIcon from "../components/cardIcons/addToMustWatch"; 
 const titleFiltering = {
   name: "title",
   value: "",
@@ -48,7 +48,7 @@ const UpcomingMoviesPage: React.FC = () => {
       <PageTemplate
         title="Upcoming Movies"
         movies={displayedMovies}
-        action={(movie) => <AddToFavouritesIcon {...movie} />}
+        action={(movie) => <AddToMustWatchIcon />}
       />
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}
