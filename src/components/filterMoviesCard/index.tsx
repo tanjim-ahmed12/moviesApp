@@ -39,7 +39,7 @@ interface FilterMoviesCardProps {
 }
 
 const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreFilter, onFilterValuesChange }) => {
-  // const [genres, setGenres] = useState([{ id: '0', name: "All" }])
+ 
   // const [production_countries, setCountry] = useState([{ iso_3166_1: '0', name: "All" }])
 
   // useEffect(() => {
@@ -71,9 +71,10 @@ const FilterMoviesCard: React.FC<FilterMoviesCardProps> = ({ titleFilter, genreF
     return <h1>{(error as Error).message}</h1>;
   }
   const genres = data?.genres || [];
-  if (genres[0].name !== "All") {
-    genres.unshift({ id: "0", name: "All" });
+  if (genres.length > 0 && genres[0].name !== "All") {
+    genres.unshift({ id: '0', name: "All" });  // Also fix type: id should be number
   }
+  
 
   const handleChange = (e: SelectChangeEvent, type: FilterOption, value: string) => {
     e.preventDefault()
