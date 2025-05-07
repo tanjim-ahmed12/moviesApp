@@ -14,7 +14,6 @@ import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
 
 
-
 const ReviewForm: React.FC<BaseMovieProps> = (movie) => {
     const defaultValues = {
         defaultValues: {
@@ -37,7 +36,7 @@ const ReviewForm: React.FC<BaseMovieProps> = (movie) => {
       const context = useContext(MoviesContext);
       const [rating, setRating] = useState(3);
       const [open, setOpen] = useState(false);  //NEW
-    
+
     
       const handleRatingChange = (event: ChangeEvent<HTMLInputElement>) => {
         setRating(Number(event.target.value));
@@ -47,14 +46,13 @@ const ReviewForm: React.FC<BaseMovieProps> = (movie) => {
         setOpen(false);
         navigate("/movies/favourites");
       };
-    
-    
+        
       const onSubmit: SubmitHandler<Review> = (review) => {
         review.movieId = movie.id;
         review.rating = rating;
         context.addReview(movie, review);
         setOpen(true);
-        // console.log(review);
+        console.log(review);
       };
     
       return (

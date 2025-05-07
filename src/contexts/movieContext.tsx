@@ -1,6 +1,7 @@
+// import React, { useState, useCallback } from "react";
+// import { BaseMovieProps } from "../types/interfaces";
 import React, { useState, useCallback } from "react";
 import { BaseMovieProps, Review } from "../types/interfaces";
-
 
 interface MovieContextInterface {
     favourites: number[];
@@ -33,9 +34,10 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = ({ children }) 
     const removeFromFavourites = useCallback((movie: BaseMovieProps) => {
         setFavourites((prevFavourites) => prevFavourites.filter((mId) => mId !== movie.id));
     }, []);
+
     const addReview = (movie:BaseMovieProps, review: Review) => {   // NEW
         setMyReviews( {...myReviews, [movie.id]: review } )
-    };
+      };
 
     return (
         <MoviesContext.Provider
@@ -43,7 +45,7 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = ({ children }) 
                 favourites,
                 addToFavourites,
                 removeFromFavourites,
-                addReview, // NEW
+                addReview,
             }}
         >
             {children}
