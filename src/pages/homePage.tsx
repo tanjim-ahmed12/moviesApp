@@ -10,9 +10,11 @@ import { DiscoverMovies, BaseMovieProps } from "../types/interfaces";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+// import FilterMoviesCard from "../components/filterMoviesCard";
 
 // MUI for dropdown
 import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from "@mui/material";
+// import FilterMoviesCard from "../components/filterMoviesCard";
 
 const titleFiltering = {
   name: "title",
@@ -89,7 +91,12 @@ const HomePage: React.FC = () => {
         onFilterValuesChange={changeFilterValues}
         titleFilter={filterValues[0].value}
         genreFilter={filterValues[1].value}
+        // sortOrder={sortOrder}
+        // onSortOrderChange={setSortOrder}
       />
+      {/* <FilterMoviesCard
+        ortOrder={sortOrder}
+        onSortOrderChange={setSortOrder}/> */}
     </>
   );
 };

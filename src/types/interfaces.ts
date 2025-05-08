@@ -73,7 +73,7 @@ export interface BaseMovieProps {
   }
   export interface GenreData {
     genres: {
-      id: string;
+      id: number;
       name: string
     }[];
   }

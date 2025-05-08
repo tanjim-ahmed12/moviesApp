@@ -13,6 +13,8 @@ import AddMovieReviewPage from './pages/addMovieReviewPage';
 import UpcomingMoviesPage from "./pages/upcomingMoviesPage";
 import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
 import MustWatchPage from "./pages/mustWatchPage"; // NEW
+import FantasyMovieFormPage from "./components/fantasyMovieForm"; 
+import FantasyMoviesPage from "./pages/fantasyMoviePage";
 
 const App = () => {
   return (
@@ -31,6 +33,8 @@ const App = () => {
 
           
           <Route path="/mustwatch" element={<MustWatchPage />} /> 
+          <Route path="/fantasy/create" element={<FantasyMovieFormPage />} />
+          <Route path="/fantasy" element={<FantasyMoviesPage />} />
         </Routes>
       </MoviesContextProvider>
     </BrowserRouter>
