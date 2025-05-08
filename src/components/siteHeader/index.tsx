@@ -52,7 +52,7 @@ const SiteHeader: React.FC = () => {
             TMDB Client
           </Typography>
           <Typography variant="h6" sx={styles.title}>
-            All you ever wanted to know about Movies!
+            All about movies
           </Typography>
           {isMobile ? (
             <>
