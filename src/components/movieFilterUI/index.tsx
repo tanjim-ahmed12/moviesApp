@@ -29,7 +29,7 @@ const styles = {
 interface MovieFilterUIProps {
     onFilterValuesChange: (f: string, s: string) => void;
     titleFilter: string;
-    genreFilter: string;
+    genreFilter: number;
 }
 
 
@@ -55,6 +55,8 @@ const MovieFilterUI: React.FC<MovieFilterUIProps> = ({ onFilterValuesChange, tit
                     onFilterValuesChange={onFilterValuesChange}
                     titleFilter={titleFilter}
                     genreFilter={genreFilter}
+                    // sortOrder={sortOder}
+                    // onSortOrderChange={setSortOrder}
                 />
             </Drawer>
         </>
