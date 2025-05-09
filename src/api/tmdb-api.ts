@@ -69,5 +69,25 @@ export const getMovie = (id: string) => {
     if (!response.ok) throw new Error("Failed to fetch upcoming movies.");
     return response.json();
   };
+
+  export const getActor = async (id: string): Promise<Actor> => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/person/${id}?api_key=${import.meta.env.VITE_TMDB_KEY}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch actor");
+    }
+    return response.json();
+  };
+  
+  export const getPopularActors = async (): Promise<{ results: Actor[] }> => {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/person/popular?api_key=${import.meta.env.VITE_TMDB_KEY}`
+    );
+    if (!response.ok) {
+      throw new Error("Failed to fetch popular actors");
+    }
+    return response.json();
+  };
   
   
