@@ -101,7 +101,13 @@ export interface BaseMovieProps {
     movieId: number,
   }
 
-
+  export interface Actor {
+    id: number;
+    name: string;
+    biography: string;
+    birthday: string;
+    profile_path?: string;
+  }
   
 
 

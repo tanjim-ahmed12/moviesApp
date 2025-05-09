@@ -15,6 +15,8 @@ import FavouriteMoviesPage from "./pages/favouriteMoviesPage"; // NEW
 import MustWatchPage from "./pages/mustWatchPage"; // NEW
 import FantasyMovieFormPage from "./components/fantasyMovieForm"; 
 import FantasyMoviesPage from "./pages/fantasyMoviePage";
+import ActorPage from "./pages/actorPage";
+import PopularActorsPage from "./pages/popularActorsPage";
 
 const App = () => {
   return (
@@ -35,6 +37,8 @@ const App = () => {
           <Route path="/mustwatch" element={<MustWatchPage />} /> 
           <Route path="/fantasy/create" element={<FantasyMovieFormPage />} />
           <Route path="/fantasy" element={<FantasyMoviesPage />} />
+          <Route path="/actors/:id" element={<ActorPage />} />
+          <Route path="/actors" element={<PopularActorsPage />} />
         </Routes>
       </MoviesContextProvider>
     </BrowserRouter>
