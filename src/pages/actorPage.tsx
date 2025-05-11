@@ -16,7 +16,7 @@ const ActorPage: React.FC = () => {
       <img src={`https://image.tmdb.org/t/p/w500${data?.profile_path}`} alt={data?.name} />
       <p>{data?.biography}</p>
       <p>Born: {data?.birthday}</p>
-      <p>Department: {data?.known_for_department}</p>
+      {/* <p>Department: {data?.known_for_department}</p> */}
     </div>
   );
 };

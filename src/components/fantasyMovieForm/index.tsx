@@ -33,13 +33,13 @@ const FantasyMovieFormPage: React.FC = () => {
     setForm({ ...form, [name]: value });
   };
 
-  const handleGenreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedIds = Array.from(
-      e.target.selectedOptions,
-      (option: any) => parseInt(option.value)
-    );
-    setForm({ ...form, genreIds: selectedIds });
-  };
+  // const handleGenreChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const selectedIds = Array.from(
+  //     e.target.selectedOptions,
+  //     (option: any) => parseInt(option.value)
+  //   );
+  //   setForm({ ...form, genreIds: selectedIds });
+  // };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();

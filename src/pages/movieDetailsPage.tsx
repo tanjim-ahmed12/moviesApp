@@ -14,14 +14,20 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 
 const MovieDetailsPage: React.FC = () => {
-  const { id } = useParams();
+  const { id } = useParams<{ id: string }>();
 
   const {
     data: movie,
     error: movieError,
     isLoading: movieLoading,
     isError: isMovieError,
-  } = useQuery<MovieDetailsProps, Error>(["movie", id], () => getMovie(id || ""));
+  } = useQuery<MovieDetailsProps, Error>(
+    ["movie", id],
+    () => getMovie(id || ""),
+    {
+      enabled: !!id, // Ensure query doesn't run without an ID
+    }
+  );
 
   const {
     data: allMoviesData,
@@ -31,10 +37,11 @@ const MovieDetailsPage: React.FC = () => {
   } = useQuery<{ results: BaseMovieProps[] }, Error>("discover", getMovies);
 
   if (movieLoading || allMoviesLoading) return <Spinner />;
-  if (isMovieError) return <h1>{movieError?.message}</h1>;
-  if (isAllMoviesError) return <h1>{allMoviesError?.message}</h1>;
+  if (isMovieError) return <h1>{movieError.message}</h1>;
+  if (isAllMoviesError) return <h1>{allMoviesError.message}</h1>;
+  if (!movie) return <h1>Movie not found.</h1>;
 
-  const movieGenres = movie?.genres?.map((g) => g.id) ?? [];
+  const movieGenres = movie.genres?.map((g) => g.id) ?? [];
 
   const similarMovies = (allMoviesData?.results ?? [])
     .filter((m) => m.id !== movie.id)

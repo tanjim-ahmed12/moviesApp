@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import PlaylistAddIcon from "@mui/icons-material/PlaylistAdd";
 import IconButton from "@mui/material/IconButton";
-import { MoviesContext } from "../../contexts/movieContext"; // adjust path
+import { MoviesContext } from "../../contexts/movieContext"; 
 import { BaseMovieProps } from "../../types/interfaces";
 
 interface AddToMustWatchIconProps {
-  movie: BaseMovieProps;
+  movie: BaseMovieProps;  
 }
 
 const AddToMustWatchIcon: React.FC<AddToMustWatchIconProps> = ({ movie }) => {
