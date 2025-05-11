@@ -3,28 +3,53 @@
 import React, { useState, useCallback } from "react";
 import { BaseMovieProps, Review } from "../types/interfaces";
 
+// interface MovieContextInterface {
+//     favourites: number[];
+//     addToFavourites: ((movie: BaseMovieProps) => void);
+//     removeFromFavourites: ((movie: BaseMovieProps) => void);
+//     addReview: ((movie: BaseMovieProps, review: Review) => void);  // NEW
+//     myReviews: { [id: number]: Review };
+//     mustWatch: BaseMovieProps[]; // NEW
+//     addToMustWatch: ((movie: BaseMovieProps) => void); // NEW
+// }
+
 interface MovieContextInterface {
     favourites: number[];
-    addToFavourites: ((movie: BaseMovieProps) => void);
-    removeFromFavourites: ((movie: BaseMovieProps) => void);
-    addReview: ((movie: BaseMovieProps, review: Review) => void);  // NEW
-    mustWatch: BaseMovieProps[]; // NEW
-    addToMustWatch: ((movie: BaseMovieProps) => void); // NEW
-}
+    addToFavourites: (movie: BaseMovieProps) => void;
+    removeFromFavourites: (movie: BaseMovieProps) => void;
+    addReview: (movie: BaseMovieProps, review: Review) => void;
+    mustWatch: BaseMovieProps[];
+    addToMustWatch: (movie: BaseMovieProps) => void;
+    myReviews: { [id: number]: Review }; 
+  }
+  
+// const initialContextState: MovieContextInterface = {
+//     favourites: [],
+//     addToFavourites: () => {},
+//     removeFromFavourites: () => {},
+//     addReview: (movie, review) => { movie.id, review},  // NEW
+//     mustWatch: [], //  NEW
+//     addToMustWatch: () => {}, //  NEW
+//     myReviews
+// };
 const initialContextState: MovieContextInterface = {
     favourites: [],
     addToFavourites: () => {},
     removeFromFavourites: () => {},
-    addReview: (movie, review) => { movie.id, review},  // NEW
-    mustWatch: [], //  NEW
-    addToMustWatch: () => {}, //  NEW
-};
+    addReview: () => {},
+    mustWatch: [],
+    addToMustWatch: () => {},
+    myReviews: {}, 
+  };
+  
 
 export const MoviesContext = React.createContext<MovieContextInterface>(initialContextState);
 
 const MoviesContextProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     // const [myReviews, setMyReviews] = useState<Review[]>( [] )  // NEW
     const [myReviews, setMyReviews] = useState<{ [id: number]: Review }>({});
+    
+    // const [setMyReviews] = useState<{ [id: number]: Review }>({});
 
     const [favourites, setFavourites] = useState<number[]>([]);
     // const [mustWatch, setMustWatch] = useState<number[]>([]);  // NEW
@@ -75,6 +100,7 @@ const MoviesContextProvider: React.FC<React.PropsWithChildren> = ({ children }) 
                 addReview,
                 mustWatch, // NEW
                 addToMustWatch, // NEW
+                myReviews
             }}
         >
             {children}

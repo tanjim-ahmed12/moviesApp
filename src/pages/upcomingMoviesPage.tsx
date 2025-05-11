@@ -4,7 +4,7 @@ import { getUpcomingMovies } from "../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from "../components/spinner";
 import { DiscoverMovies } from "../types/interfaces";
-import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
+// import AddToFavouritesIcon from "../components/cardIcons/addToFavourites";
 import useFiltering from "../hooks/useFiltering";
 import MovieFilterUI, {
   titleFilter,
@@ -48,7 +48,7 @@ const UpcomingMoviesPage: React.FC = () => {
       <PageTemplate
         title="Upcoming Movies"
         movies={displayedMovies}
-        action={(movie) => <AddToMustWatchIcon />}
+        action={(movie) => <AddToMustWatchIcon movie={movie}/>}
       />
       <MovieFilterUI
         onFilterValuesChange={changeFilterValues}

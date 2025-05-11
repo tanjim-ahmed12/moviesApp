@@ -55,7 +55,7 @@ const MustWatchPage: React.FC = () => {
   const allMovies: BaseMovieProps[] = data.results;
 
   // Filter movies by IDs in mustWatch list
-  const mustWatchMovies = allMovies.filter((movie) => mustWatch.includes(movie.id));
+  const mustWatchMovies = allMovies.filter((movie) => mustWatch.includes(movie));
 
   return (
     <>
